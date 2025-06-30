@@ -7,7 +7,7 @@ the original documentation is available at: https://learn.microsoft.com/en-us/az
 
 **You'll need the following Azure built-in roles for different aspects of managing connected machines:**
 
-* To onboard machines, you must have the Azure Connected Machine Onboarding or Contributor role for the resource group where you're managing the servers.
+* To onboard machines, you must have the **Azure Connected Machine** Onboarding or **Contributor** role for the resource group where you're managing the servers.
 * To read, modify, and delete a machine, you must have the Azure Connected Machine Resource Administrator role for the resource group.
 * To select a resource group from the drop-down list when using the Generate script method, you'll also need the Reader role for that resource group (or another role that includes Reader access).
 * When associating a Private Link Scope with an Arc Server, you must have Microsoft.HybridCompute/privateLinkScopes/read permission on the Private Link Scope Resource.
