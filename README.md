@@ -26,7 +26,32 @@ The URL https://learn.microsoft.com/en-us/azure/azure-arc/servers/prerequisites#
 
 ## Connected Machine agent network requirements
 
-In order for the Arc-enabled Servers to connect to Azure, they use outbound communication via port 443. You need to open (firewall) communication to URLS listed at https://learn.microsoft.com/en-us/azure/azure-arc/servers/network-requirements?tabs=azure-cloud#urls 
+In order for the Arc-enabled Servers to connect to Azure, they use outbound communication via port 443. You need to open (firewall) communication to URLS listed at https://learn.microsoft.com/en-us/azure/azure-arc/servers/network-requirements?tabs=azure-cloud#urls <br>
+<br>
+To test connectivity from one server, open a PowerShell prompt and test the following script:<br>
+> [!NOTE]
+> replace the location below (eastus) with your deployment location your <br>
+```
+$location = "eastus" 
+Test-NetConnection -Port 443 
+Test-NetConnection -ComputerName aka.ms -Port 443 
+Test-NetConnection -ComputerName download.microsoft.com -Port 443 
+Test-NetConnection -ComputerName packages.microsoft.com -Port 443 
+Test-NetConnection -ComputerName login.windows.net -Port 443 
+Test-NetConnection -ComputerName login.microsoftonline.com -Port 443 
+Test-NetConnection -ComputerName pas.windows.net -Port 443 
+Test-NetConnection -ComputerName management.azure.com -Port 443 
+Test-NetConnection -ComputerName his.arc.azure.com -Port 443 
+Test-NetConnection -ComputerName guestconfiguration.azure.com -Port 443 
+Test-NetConnection -ComputerName guestnotificationservice.azure.com -Port 443 
+Test-NetConnection -ComputerName servicebus.windows.net -Port 443 
+Test-NetConnection -ComputerName waconazure.com -Port 443 
+Test-NetConnection -ComputerName blob.core.windows.net -Port 443 
+Test-NetConnection -ComputerName dc.services.visualstudio.com -Port 443 
+Test-NetConnection -ComputerName "san-af-$($location)-prod.azurewebsites.net" -Port 443 
+```
+
+
 
 ## Agent requirements
 
