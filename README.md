@@ -19,12 +19,51 @@ In order to the Arc-enabled resources to communicate with Azure, the following A
 * Microsoft.HybridConnectivity<br>
 * Microsoft.AzureArcData (if you plan to Arc-enable SQL Servers)<br>
 * Microsoft.Compute (for Azure Update Manager and automatic extension upgrades)<br>
+* Microsoft.Dashboard **is also recommended**
 <br>
 To register these Resource Providers, you can either use the Portal, Azure PowerShell, or Azure CLI. 
 The URL https://learn.microsoft.com/en-us/azure/azure-arc/servers/prerequisites#azure-resource-providers contains instructions on how to register these Resource providers 
 
+## Connected Machine agent network requirements
+
+In order for the Arc-enabled Servers to connect to Azure, they use outbound communication via port 443. You need to open (firewall) communication to URLS listed at https://learn.microsoft.com/en-us/azure/azure-arc/servers/network-requirements?tabs=azure-cloud#urls 
+
 ## Agent requirements
+
+To get a list of Operating Systems that support Arc-enabled Servers go to: https://learn.microsoft.com/en-us/azure/azure-arc/servers/prerequisites#supported-operating-systems <br>
+To understand Software and System requirements go to: https://learn.microsoft.com/en-us/azure/azure-arc/servers/prerequisites#software-and-system-requirements <br>
+To review the Local user logon Right for the Windows System go to: https://learn.microsoft.com/en-us/azure/azure-arc/servers/prerequisites#local-user-logon-right-for-windows-systems<br>
+
+
+## Create a Resource Group
+
+## Create a Service Principal (**SPN**)
+
+A Service Principal can be used to onboard servers at scale, not necessary during your Proof-of-Concept (POC) phase. <br>
+tbe 
+
+* To create a service principal in Azure refer to the official Microsoft documentation at: https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal. <br>
+
+ 
+* with POWERSHELL <br>
+```
+az ad sp create-for-rbac -n "<replace with your SPN>" --role owner --scopes  /subscriptions/<replace with your subscription-id>
+```
+
+> [!NOTE]
+> when the SPN is created, Azure will generate an output providing you with the AppId, Password, and the TenantID.
+> you need to copy these pieces of information, something in the lines of: <br><br>
+> {<br>
+>   "appId": "04da1cff-eeee-444f-aaaa-da9999999999",<br>
+>   "password": "Xxx0X@xxxxXXxxXxX.XX9.999x9XXxxXxx9XxxxX",<br>
+>   "tenant": "999x99999-xxxx-9x99-9xx9-999x99x9x999"<br>
+> }<br>
+>
+<br>
+
 
 ## Log Analytics
 
 ## Obtaining the Scripts to Onboard Client Agent
+
+
